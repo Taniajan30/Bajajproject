@@ -1,11 +1,15 @@
 {
   "name": "chitkara-challenge-monolith",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "install-backend": "cd backend && npm install",
     "install-frontend": "cd frontend && npm install",
     "build-frontend": "cd frontend && npm run build",
+    "build": "npm run install-backend && npm run install-frontend && npm run build-frontend",
     "postinstall": "npm run install-backend && npm run install-frontend && npm run build-frontend",
-    "start": "cd backend && npm start"
+    "start": "cd backend && node server.js"
   }
 }
