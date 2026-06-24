@@ -12,8 +12,12 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Enable CORS for all origins
-app.use(cors());
+// Enable CORS - allow frontend URL from env or all origins in dev
+const allowedOrigins = process.env.FRONTEND_URL
+  ? [process.env.FRONTEND_URL, 'http://localhost:5173', 'http://localhost:3000']
+  : true; // allow all in dev
+
+app.use(cors({ origin: allowedOrigins }));
 
 // Parse JSON request body
 app.use(express.json());

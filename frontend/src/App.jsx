@@ -57,9 +57,11 @@ function TreeVisualizer({ treeData }) {
 
 function App() {
   const [apiUrl, setApiUrl] = useState(
-    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://localhost:5000/bfhl'
-      : '/bfhl'
+    import.meta.env.VITE_API_URL
+      ? import.meta.env.VITE_API_URL
+      : (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+          ? 'http://localhost:5000/bfhl'
+          : '/bfhl')
   );
   const [inputText, setInputText] = useState(sampleInput);
   const [loading, setLoading] = useState(false);
